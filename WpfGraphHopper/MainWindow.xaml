@@ -1,0 +1,57 @@
+﻿<Window x:Class="WpfGraphHopper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfGraphHopper"
+        mc:Ignorable="d"
+        Title="GraphHopper" Height="350" Width="525" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="2">
+            <Label Content="Key"/>
+            <TextBox Name="TextBoxKey" Text=""/>
+            <Separator/>
+            <Label Content="Addresses"/>
+            <TextBox Name="TextBoxAddress1" Text="Berlin"/>
+            <Label Name="LabelAddress1"/>
+            <TextBox Name="TextBoxAddress2" Text="Hamburg"/>
+            <Label Name="LabelAddress2"/>
+            <TextBox Name="TextBoxAddress3" Text="Köln"/>
+            <Label Name="LabelAddress3"/>
+            <TextBox Name="TextBoxAddress4" Text="München"/>
+            <Label Name="LabelAddress4"/>
+            <Separator/>
+            <Button Name="ButtonGeocode" Content="Geocode" Click="ButtonGeocode_Click"/>
+            <Label Name="LabelGeocode"/>
+            <Button Name="ButtonMatrix" Content="Matrix" Click="ButtonMatrix_Click" IsEnabled="False"/>
+            <Label Name="LabelMatrix"/>
+            <Button Name="ButtonRoute" Content="Route" Click="ButtonRoute_Click" IsEnabled="False"/>
+            <Label Name="LabelRoute"/>
+        </StackPanel>
+
+        <WebBrowser Grid.Column="1" Name="Browser"/>
+
+        <GridSplitter Grid.Column="2" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Width="2" Background="Black"/>
+
+        <TextBox Grid.Column="3" Name="TextboxResponse" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <Hyperlink NavigateUri="https://www.openstreetmap.org/copyright" RequestNavigate="HyperlinkRequestNavigate"><Run Text="© OpenStreetMap-Mitwirkende"/></Hyperlink>
+        </TextBlock>
+
+        <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center">
+            <Hyperlink NavigateUri="https://graphhopper.com" RequestNavigate="HyperlinkRequestNavigate"><Run Text="GraphHopper"/></Hyperlink>
+        </TextBlock>
+    </Grid>
+</Window>

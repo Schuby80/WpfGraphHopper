@@ -1,0 +1,46 @@
+
+<html>
+<body>
+  <div id="mapdiv"></div>
+  <script src="http://www.openlayers.org/api/OpenLayers.js" ></script>
+ 
+   <script>
+     var zoom = 0;
+     var lonLat;
+     var options = {
+        controls: [
+        new OpenLayers.Control.Navigation(),
+        new OpenLayers.Control.PanZoomBar(),
+        new OpenLayers.Control.Attribution()
+        ]
+     };
+
+     var map = new OpenLayers.Map("mapdiv", options);
+     map.addLayer(new OpenLayers.Layer.OSM());
+     
+     var markers = new OpenLayers.Layer.Markers("Markers");
+     var bounds = new OpenLayers.Bounds();
+     var epsg4326 =  new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
+     var projectTo =  map.getProjectionObject(); //The map projection (Spherical Mercator)
+
+lonLat = new OpenLayers.LonLat(-0.1279688 , 51.5077286).transform(epsg4326, projectTo);
+markers.addMarker(new OpenLayers.Marker(lonLat));
+bounds.extend(lonLat);
+
+lonLat = new OpenLayers.LonLat(9.997025 , 53.555079).transform(epsg4326, projectTo);
+markers.addMarker(new OpenLayers.Marker(lonLat));
+bounds.extend(lonLat);
+
+lonLat = new OpenLayers.LonLat(6.9599738 , 50.9383611).transform(epsg4326, projectTo);
+markers.addMarker(new OpenLayers.Marker(lonLat));
+bounds.extend(lonLat);
+
+lonLat = new OpenLayers.LonLat(11.5753822 , 48.1371079).transform(epsg4326, projectTo);
+markers.addMarker(new OpenLayers.Marker(lonLat));
+bounds.extend(lonLat);
+
+     map.addLayer(markers);     
+     map.zoomToExtent(bounds);
+  </script>
+</body>
+</html>
